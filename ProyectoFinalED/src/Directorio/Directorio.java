@@ -15,12 +15,12 @@ public class Directorio {
     private String nombre;
     private Double tamaño;
     private LinkedList<Directorio> directorios;
-
+    
     public Directorio(String nombre, Double tamaño) {
         this.nombre = nombre;
         this.tamaño = tamaño;
         this.directorios = new LinkedList<Directorio>();
-    }
+}
 
     public Directorio(String nombre) {
         this.nombre = nombre;
