@@ -11,20 +11,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="568.0" stylesheets="@../Estilo/estiloPantalla.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="main.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="716.0" prefWidth="964.0" stylesheets="@../Estilo/estiloPantalla.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="main.FXMLDocumentController">
     <children>
-      <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="33.0" prefWidth="580.0" styleClass="Center" stylesheets="@../Estilo/estiloPantalla.css">
+      <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="33.0" prefWidth="964.0" styleClass="Center" stylesheets="@../Estilo/estiloPantalla.css">
          <children>
-            <Button fx:id="directorio" layoutX="20.0" layoutY="2.0" mnemonicParsing="false" text="Seleccione un directorio" onAction="#ButtonActionADirectorio"/>
-            <TextField fx:id="mRuta" layoutX="180.0" layoutY="4.0" prefHeight="25.0" prefWidth="277.0" />
-            <Button fx:id="visualizarBoton" layoutX="475.0" layoutY="2.0" mnemonicParsing="false" text="Visualización" />
+            <Button fx:id="directorio" layoutX="65.0" layoutY="3.0" mnemonicParsing="false" text="Seleccione un directorio" onAction="#ButtonActionADirectorio"/>
+            <TextField fx:id="mRuta" layoutX="280.0" layoutY="3.0" prefHeight="25.0" prefWidth="450.0" />
+            <Button fx:id="visualizarBoton" layoutX="800.0" layoutY="3.0" mnemonicParsing="false" text="Visualización" onAction="#seeButtonAction"/>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="mostrar" layoutY="87.0" prefHeight="213.0" prefWidth="577.0" />
-      <AnchorPane layoutX="4.0" layoutY="353.0" prefHeight="33.0" prefWidth="570.0">
-         <children>
-            <Button layoutX="247.0" layoutY="4.0" mnemonicParsing="false" text="Save Image" />
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="mostrar" layoutY="34.0"/>
     </children>
 </AnchorPane>

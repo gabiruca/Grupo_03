@@ -113,25 +113,6 @@ public class FXMLDocumentController implements Initializable {
     public double redondear(double tam, int decimales) {
         return new BigDecimal(tam).setScale(decimales, RoundingMode.HALF_EVEN).doubleValue();
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }
-    private void getVector(MouseEvent event) {
-        disX = event.getX();
-        disY = event.getY();
-    }
-    @FXML
-    private void moverVentana(MouseEvent event) {
-        Stage stage = (Stage) mostrar.getScene().getWindow();
-        stage.setX(event.getX() - disX);
-        stage.setY(event.getY() - disY);
-    }
-    
-    public boolean isFile(File archivo) {
-        return archivo.isFile();
-    }
     
     public void setLabelSize(double cantidad,Label label) {
         label.setStyle("-fx-font-weight: bold; -fx-font-size: 15");
@@ -155,22 +136,6 @@ public class FXMLDocumentController implements Initializable {
         Color randomColor = new Color(r, g, b, 1);
         return randomColor;
     }
-    
-     public double getTamanio(File directorio) {
-        double tamanio = 0.0;
-        File[] files = directorio.listFiles();
-        for (File file : files) {
-            if (file.isFile()) {
-                tamanio += file.length();
-            } else {
-                File[] fileB = file.listFiles();
-                for (File filel : fileB) {
-                    tamanio += filel.length();
-                }
-            }
-        }
-        return tamanio;
-    }
      
      public void Pintura(Directorio directorio, Pane pane, double width, double height, String tipo) {
         LinkedList<Directorio> seleccionado = directorio.getDirectorios();
@@ -185,7 +150,7 @@ public class FXMLDocumentController implements Initializable {
                 tamaño.setStroke(Color.WHITE);
                 VBox vbox = new VBox();
                 vbox.getChildren().addAll(tamaño);
-                pane.getChildren().add(vbox);
+                pane.getChildren().addAll(vbox);
             } else if (!f.esDirectorio() && tipo.equals("v")) {
                 double fact1 = width;
                 double fact2 = height * (f.getTamaño() / size);
@@ -219,11 +184,11 @@ public class FXMLDocumentController implements Initializable {
         Pane SizeTotal = new Pane();
 
         HBox graficos = new HBox();
-        graficos.setMaxWidth(960);
+        graficos.setMaxWidth(964);
         graficos.setMaxHeight(650);
 
         Rectangle sizeTotalGraficos = new Rectangle();
-        sizeTotalGraficos.setWidth(950);
+        sizeTotalGraficos.setWidth(964);
         sizeTotalGraficos.setHeight(30);
         sizeTotalGraficos.setFill(Color.GOLD);
         sizeTotalGraficos.setStroke(Color.WHITE);
@@ -237,5 +202,8 @@ public class FXMLDocumentController implements Initializable {
         mostrar.getChildren().addAll(contenedor);
     }
 
-    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
 }

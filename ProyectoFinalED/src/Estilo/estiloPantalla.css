@@ -13,7 +13,7 @@ and open the template in the editor.
 }
 
 .Button{
-    -fx-background-color: #d9d9d9;
+    -fx-background-color: cornflowerblue;
 }
 
 .Button:hover{
@@ -21,60 +21,23 @@ and open the template in the editor.
     -fx-text-style: bold;
 }
 
-.visualizeButton{
-    -fx-background-color: #66ff99;
-}
-
-.visualizeButton:hover{
-    -fx-background-color: transparent;
-    -fx-text-fill: #66ff66;
-    -fx-stroke-width: 1px;
-    -fx-border-color: #66ff66;
-    -fx-border-width: 2px;
-    -fx-border-style: dotted;
-    -fx-border-radius: 3px;
+#visualizarBoton{
+    -fx-background-color: cornflowerblue;
+    -fx-text-fill: white;
     -fx-text-style: bold;
-}
-
-.Bar{
-    -fx-background-color: #cccccc;
-}
-
-.ExitButton{
-    -fx-background-color: #ff3333;
-}
-
-.ExitButton:hover{
-    -fx-text-fill: #ff3333;
-    -fx-background-color: transparent;
-    -fx-border-radius: 3px;
-    -fx-border-color: #ff3333;
-}
-
-.BackButton{
-    -fx-background-color: transparent;
-    -fx-text-fill: #000000;
-}
-
-.QuitButton{
-    -fx-background-color: transparent;
-    -fx-text-fill: #000000
-}
-
-.QuitButton:hover{
-    -fx-text-fill: #ff3333;
+    -fx-border-radius: 5px;
 }
 
 .Center{
     -fx-background-color: #f6f6f6;
 }
-
-.SaveButton{
-    -fx-background-color: #66ff99;
-    -fx-text-fill: #000000;
-}
-
 .SaveButton:hover{
     -fx-text-fill: whitesmoke;
     -fx-background-color: #3333ff;
+}
+#directorio{
+    -fx-background-color: cornflowerblue;
+    -fx-text-fill: white;
+    -fx-text-style: bold;
+    -fx-border-radius: 5px;
 }

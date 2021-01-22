@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="ProyectoFinalED.jar" size="9750" download="eager" />
+    <jar href="ProyectoFinalED.jar" size="9466" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="ProyectoFinalED" >
     <param name="requiredFXVersion" value="8.0+"/>
