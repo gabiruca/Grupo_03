@@ -172,5 +172,70 @@ public class FXMLDocumentController implements Initializable {
         return tamanio;
     }
      
+     public void Pintura(Directorio directorio, Pane pane, double width, double height, String tipo) {
+        LinkedList<Directorio> seleccionado = directorio.getDirectorios();
+        double size = directorio.getTamaño();
+        seleccionado.forEach((f) -> {
+            if (!f.esDirectorio() && tipo.equals("h")) {
+                double fact1 = width * (f.getTamaño() / size);
+                double fact2 = height;
+                Rectangle tamaño = new Rectangle(fact1, fact2);
+                tamaño.setFill(getColorAleatorio());
+                tamaño.setStrokeType(StrokeType.INSIDE);
+                tamaño.setStroke(Color.WHITE);
+                VBox vbox = new VBox();
+                vbox.getChildren().addAll(tamaño);
+                pane.getChildren().add(vbox);
+            } else if (!f.esDirectorio() && tipo.equals("v")) {
+                double fact1 = width;
+                double fact2 = height * (f.getTamaño() / size);
+                Rectangle shape = new Rectangle(fact1, fact2);
+                shape.setFill(getColorAleatorio());
+                shape.setStrokeType(StrokeType.INSIDE);
+                shape.setStroke(Color.WHITE);
+                HBox temp = new HBox();
+                temp.getChildren().addAll(shape);
+                pane.getChildren().add(temp);
+            } else if (f.esDirectorio() && tipo.equals("h")) {
+                double size2 = f.getTamaño();
+                VBox box = new VBox();
+                box.setMaxWidth(width * (size2 / size));
+                box.setMaxHeight(height);
+                Pintura(f, box, box.getMaxWidth(), box.getMaxHeight(), "v");
+                pane.getChildren().add(box);
+            } else if (f.esDirectorio() && tipo.equals("v")) {
+                double size2 = f.getTamaño();
+                HBox box = new HBox();
+                box.setMaxWidth(width);
+                box.setMaxHeight(height * (size2 / size));
+                Pintura(f, box, box.getMaxWidth(), box.getMaxHeight(), "h");
+                pane.getChildren().add(box);
+            }
+        });
+    }
+     
+     public void seeButtonAction(ActionEvent event) throws IOException {
+        VBox contenedor = new VBox();
+        Pane SizeTotal = new Pane();
+
+        HBox graficos = new HBox();
+        graficos.setMaxWidth(960);
+        graficos.setMaxHeight(650);
+
+        Rectangle sizeTotalGraficos = new Rectangle();
+        sizeTotalGraficos.setWidth(950);
+        sizeTotalGraficos.setHeight(30);
+        sizeTotalGraficos.setFill(Color.GOLD);
+        sizeTotalGraficos.setStroke(Color.WHITE);
+
+        Label extensionSize = new Label();
+        setLabelSize(treeMap.getFirst().getTamaño(),extensionSize);
+
+        SizeTotal.getChildren().addAll(sizeTotalGraficos, extensionSize);
+        contenedor.getChildren().addAll(SizeTotal, graficos);
+        Pintura(treeMap.getFirst(), graficos, 960.0, 650.0, "h");
+        mostrar.getChildren().addAll(contenedor);
+    }
+
     
 }
