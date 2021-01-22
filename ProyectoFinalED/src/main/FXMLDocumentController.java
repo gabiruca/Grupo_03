@@ -7,11 +7,14 @@ package main;
 
 import Directorio.Directorio;
 import java.io.File;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +23,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.StrokeType;
 import javafx.stage.DirectoryChooser;
 
 /**
@@ -28,10 +37,12 @@ import javafx.stage.DirectoryChooser;
  */
 public class FXMLDocumentController implements Initializable {
     
-    @FXML
     LinkedList<Directorio> treeMap;
+    @FXML
     private TextField mRuta;
+    @FXML
     private Button visualizarBoton;
+    @FXML
     private AnchorPane mostrar;
     
     @FXML
@@ -41,7 +52,7 @@ public class FXMLDocumentController implements Initializable {
         File directorioSeleccionado = dc.showDialog(null);
         if (directorioSeleccionado != null) {
             Directorio dir = new Directorio(directorioSeleccionado.getName());
-            dir.setTamaño(redondear(recorrerDirectorio(0,dir,directorioSeleccionado.listFiles()),2));
+            dir.setTamaño(redondear(recorrerDirectorio(0.0,dir,directorioSeleccionado.listFiles()),2));
             mRuta.setText(directorioSeleccionado.getAbsolutePath());
             visualizarBoton.setDisable(false);
             treeMap = new LinkedList<>();

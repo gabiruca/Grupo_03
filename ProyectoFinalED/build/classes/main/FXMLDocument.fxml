@@ -15,12 +15,12 @@
     <children>
       <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="33.0" prefWidth="580.0" styleClass="Center" stylesheets="@../Estilo/estiloPantalla.css">
          <children>
-            <Button layoutX="20.0" layoutY="2.0" mnemonicParsing="false" text="Seleccione un directorio" onAction="#ButtonActionADirectorio"/>
-            <TextField layoutX="180.0" layoutY="4.0" prefHeight="25.0" prefWidth="277.0" />
-            <Button layoutX="475.0" layoutY="2.0" mnemonicParsing="false" text="Visualización" />
+            <Button fx:id="directorio" layoutX="20.0" layoutY="2.0" mnemonicParsing="false" text="Seleccione un directorio" onAction="#ButtonActionADirectorio"/>
+            <TextField fx:id="mRuta" layoutX="180.0" layoutY="4.0" prefHeight="25.0" prefWidth="277.0" />
+            <Button fx:id="visualizarBoton" layoutX="475.0" layoutY="2.0" mnemonicParsing="false" text="Visualización" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="87.0" prefHeight="213.0" prefWidth="577.0" />
+      <AnchorPane fx:id="mostrar" layoutY="87.0" prefHeight="213.0" prefWidth="577.0" />
       <AnchorPane layoutX="4.0" layoutY="353.0" prefHeight="33.0" prefWidth="570.0">
          <children>
             <Button layoutX="247.0" layoutY="4.0" mnemonicParsing="false" text="Save Image" />
