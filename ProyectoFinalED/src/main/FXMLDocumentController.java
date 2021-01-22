@@ -6,6 +6,7 @@
 package main;
 
 import Directorio.Directorio;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -30,6 +31,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.stage.DirectoryChooser;
+import javafx.stage.Stage;
 
 /**
  *
@@ -44,6 +46,8 @@ public class FXMLDocumentController implements Initializable {
     private Button visualizarBoton;
     @FXML
     private AnchorPane mostrar;
+    private double disX = 0;
+    private double disY = 0;
     
     @FXML
     public void ButtonActionADirectorio(ActionEvent event) {
@@ -113,6 +117,60 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    private void getVector(MouseEvent event) {
+        disX = event.getX();
+        disY = event.getY();
+    }
+    @FXML
+    private void moverVentana(MouseEvent event) {
+        Stage stage = (Stage) mostrar.getScene().getWindow();
+        stage.setX(event.getX() - disX);
+        stage.setY(event.getY() - disY);
+    }
+    
+    public boolean isFile(File archivo) {
+        return archivo.isFile();
+    }
+    
+    public void setLabelSize(double cantidad,Label label) {
+        label.setStyle("-fx-font-weight: bold; -fx-font-size: 15");
+        DecimalFormat two = new DecimalFormat("0.00");
+        if (cantidad < 1024) {
+            label.setText("(" + cantidad + " KB" + ")");
+        } else if (cantidad > 1024 && cantidad < 1024 * 1024) {
+            label.setText("(" + two.format(cantidad / 1024) + " MB" + ")");
+        } else if (cantidad > 1024 * 1024 && cantidad < 1024 * 1024) {
+            label.setText("(" + two.format(cantidad / 1024 * 1024) + " GB" + ")");
+        } else {
+            label.setText("(" + two.format(cantidad / 1024 * 1024 * 1024) + " TB" + ")");
+        }
+    }
+    
+    public Color getColorAleatorio() {
+        Random rd = new Random();
+        float r = rd.nextFloat();
+        float g = rd.nextFloat();
+        float b = rd.nextFloat();
+        Color randomColor = new Color(r, g, b, 1);
+        return randomColor;
+    }
+    
+     public double getTamanio(File directorio) {
+        double tamanio = 0.0;
+        File[] files = directorio.listFiles();
+        for (File file : files) {
+            if (file.isFile()) {
+                tamanio += file.length();
+            } else {
+                File[] fileB = file.listFiles();
+                for (File filel : fileB) {
+                    tamanio += filel.length();
+                }
+            }
+        }
+        return tamanio;
+    }
+     
     
 }

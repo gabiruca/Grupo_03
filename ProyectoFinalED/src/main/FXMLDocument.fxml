@@ -23,7 +23,7 @@
       <AnchorPane fx:id="mostrar" layoutY="87.0" prefHeight="213.0" prefWidth="577.0" />
       <AnchorPane layoutX="4.0" layoutY="353.0" prefHeight="33.0" prefWidth="570.0">
          <children>
-            <Button layoutX="247.0" layoutY="4.0" mnemonicParsing="false" text="Save Image" />
+            
          </children>
       </AnchorPane>
     </children>
