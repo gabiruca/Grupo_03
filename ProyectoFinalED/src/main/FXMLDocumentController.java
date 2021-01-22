@@ -6,6 +6,9 @@
 package main;
 
 import Directorio.Directorio;
+import java.io.File;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.DirectoryChooser;
 
 /**
  *
@@ -25,18 +29,30 @@ import javafx.scene.layout.AnchorPane;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label label;
     LinkedList<Directorio> treeMap;
     private TextField mRuta;
-    private Button visualizar;
+    private Button visualizarBoton;
     private AnchorPane mostrar;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    public void ButtonActionADirectorio(ActionEvent event) {
+        DirectoryChooser dc = new DirectoryChooser();
+        dc.setInitialDirectory(new File("src"));
+        File directorioSeleccionado = dc.showDialog(null);
+        if (directorioSeleccionado != null) {
+            Directorio dir = new Directorio(directorioSeleccionado.getName());
+            dir.setTamaño(redondear(recorrerDirectorio(0,dir,directorioSeleccionado.listFiles()),2));
+            mRuta.setText(directorioSeleccionado.getAbsolutePath());
+            visualizarBoton.setDisable(false);
+            treeMap = new LinkedList<>();
+            treeMap.add(dir);
+            iteration(0,treeMap);
+        }else{
+            System.out.print("Seleccione un directorio");
+        }
+        mostrar.getChildren().clear();
     }
-    
+
      //Métodos necesarios para el manejo del treeMap
     public void iteration(int numero,LinkedList<Directorio> treeMap) {
         Iterator it = treeMap.iterator();
@@ -61,6 +77,28 @@ public class FXMLDocumentController implements Initializable {
             return "";
         }
     }
+    
+    //Métodos para selección de directorio
+    public double recorrerDirectorio(double tot, Directorio dir,File[] contenido) {
+        for (File file : contenido) {
+            if (file.isFile()) {
+                tot +=redondear(file.length() / 1024.0, 2);
+                Directorio directorio = new Directorio(file.getName(),redondear(file.length()/1024.0, 2));
+                dir.getDirectorios().add(directorio);
+            } else {
+                Directorio direct = new Directorio(file.getName());
+                double size=redondear(recorrerDirectorio(0.0, dir,file.listFiles()),2);
+                direct.setTamaño(size);
+                dir.getDirectorios().add(dir);
+                tot+=size;
+            }
+        }
+        return tot;
+    }
+    public double redondear(double tam, int decimales) {
+        return new BigDecimal(tam).setScale(decimales, RoundingMode.HALF_EVEN).doubleValue();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
