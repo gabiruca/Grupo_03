@@ -13,11 +13,11 @@
 
 <AnchorPane id="AnchorPane" prefHeight="380.0" prefWidth="568.0" stylesheets="@../Estilo/estiloPantalla.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="main.FXMLDocumentController">
     <children>
-      <AnchorPane layoutX="6.0" layoutY="20.0" prefHeight="33.0" prefWidth="566.0" styleClass="Center" stylesheets="@../Estilo/estiloPantalla.css">
+      <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="33.0" prefWidth="580.0" styleClass="Center" stylesheets="@../Estilo/estiloPantalla.css">
          <children>
-            <Button layoutX="54.0" layoutY="2.0" mnemonicParsing="false" text="Select Directory" />
-            <TextField layoutX="165.0" layoutY="4.0" prefHeight="25.0" prefWidth="277.0" />
-            <Button layoutX="459.0" layoutY="2.0" mnemonicParsing="false" text="Visualize" />
+            <Button layoutX="20.0" layoutY="2.0" mnemonicParsing="false" text="Seleccione un directorio"/>
+            <TextField layoutX="180.0" layoutY="4.0" prefHeight="25.0" prefWidth="277.0" />
+            <Button layoutX="475.0" layoutY="2.0" mnemonicParsing="false" text="Visualización" />
          </children>
       </AnchorPane>
       <AnchorPane layoutY="87.0" prefHeight="213.0" prefWidth="577.0" />
